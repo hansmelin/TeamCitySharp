@@ -6,6 +6,8 @@ using System.Linq;
 using System.Xml;
 
 using TeamCitySharp.Connection;
+using TeamCitySharp.DomainEntities;
+using File = System.IO.File;
 
 namespace TeamCitySharp.ActionTypes
 {
@@ -26,6 +28,12 @@ namespace TeamCitySharp.ActionTypes
         public ArtifactWrapper ByBuildConfigId(string buildConfigId)
         {
             return new ArtifactWrapper(_caller, buildConfigId);
+        }
+
+        public List<Artifact> ByBuildId(string buildId, string name)
+        {
+            var artifactList = _caller.GetFormat<ArtifactList>("/app/rest/builds/id:{0}/artifacts/children/{1}", buildId, name);
+            return artifactList.File;
         }
     }
 
