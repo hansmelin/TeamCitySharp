@@ -30,9 +30,9 @@ namespace TeamCitySharp.ActionTypes
             return new ArtifactWrapper(_caller, buildConfigId);
         }
 
-        public List<Artifact> ByBuildId(string buildId, string name)
+        public List<Artifact> ByBuildId(string buildId, string subfolder)
         {
-            var artifactList = _caller.GetFormat<ArtifactList>("/app/rest/builds/id:{0}/artifacts/children/{1}", buildId, name);
+            var artifactList = _caller.GetFormat<ArtifactList>("/app/rest/builds/id:{0}/artifacts/children/{1}", buildId, subfolder);
             return artifactList.File;
         }
     }

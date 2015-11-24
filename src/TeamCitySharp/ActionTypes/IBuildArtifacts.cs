@@ -10,6 +10,6 @@ namespace TeamCitySharp.ActionTypes
 
         ArtifactWrapper ByBuildConfigId(string buildConfigId);
 
-        List<Artifact> ByBuildId(string buildId, string name);
+        List<Artifact> ByBuildId(string buildId, string subfolder);
     }
 }
